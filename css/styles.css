@@ -59,3 +59,26 @@ form {
 }
 
 /* plate[for*="obb"] selects all plates for which the for attribute contains obb */
+
+.navbar-container {
+  display:flex;
+}
+
+.column-logo {
+  width: 30%;
+}
+
+.column-navbar-items {
+  width: 70%;
+  margin-right: 20%;
+}
+
+.list-items { /* class in the ul to remove bullets */
+  list-style-type: none;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.list-item {
+  margin: 30px;
+}
