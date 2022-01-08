@@ -54,31 +54,51 @@ form {
   margin: 30px; /* top right bottom left */
 }
 
+/* plate[for*="obb"] selects all plates for which the for attribute contains obb */
 [type=text], [type=number], [type=submit] {
   padding: 4px;
 }
 
-/* plate[for*="obb"] selects all plates for which the for attribute contains obb */
 
-.navbar-container {
-  display:flex;
+
+/* logo and navbar lay-out */
+
+/* make it responsive with "media queries" */
+
+@media screen and (min-width: 400px) {
+
+
+  .navbar-container {
+    display:flex;
+  }
+
+  .column-logo {
+    width: 30%;
+  }
+
+  .column-navbar-items {
+    width: 70%;
+    margin-right: 20%;
+  }
+
+  .list-items { /* class in the ul to remove bullets */
+    list-style-type: none;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .list-item {
+    margin: 30px;
+  }
+
+
 }
 
-.column-logo {
-  width: 30%;
-}
+/* for bigger screens mobile-first, it inherits all from smaller screens */
 
-.column-navbar-items {
-  width: 70%;
-  margin-right: 20%;
-}
+@media screen and (min-width: 768px) {
+  .list-items {
+    margin: 60px;
+  }
 
-.list-items { /* class in the ul to remove bullets */
-  list-style-type: none;
-  display: flex;
-  flex-direction: row-reverse;
-}
-
-.list-item {
-  margin: 30px;
 }
