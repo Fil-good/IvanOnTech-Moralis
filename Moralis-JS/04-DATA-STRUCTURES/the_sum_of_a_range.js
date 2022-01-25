@@ -1,4 +1,5 @@
 // in order to run this file, go to the terminal and type 'node file.js'
+// play around in zsh terminal, with command 'node' (like irb in Ruby environment)
 
 /* starting from console.log(sum(range(1, 10)));
 write range function, 2 arguments: start and end, returns array [start ... end]
@@ -18,7 +19,7 @@ function range(start_value, end_value) {
 
 function sum(array) {
   sum_of_values = 0;
-  array.forEach(element => {
+  array.forEach(element => { /* FOREACH */
   sum_of_values += element;
 
 });
