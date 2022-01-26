@@ -1,9 +1,23 @@
 const cryptos = ['BTC', 'ETH', 'ADA', 'XRP', 'BNB']
 
 function tickersToList(tickers, isOrdered) {
-  for(i=0; i < tickers.length; i++) {
-    console.log(tickers[i]);
+
+// state space
+let result = '';
+
+// computations
+  if (isOrdered == true) {
+    result +=  `<ol>`
+  for(ticker of tickers) {
+    result += `<li>${ticker}</li>`;
   }
+  result += `</ol>`
+  } else {
+    result += 'ul';
+  }
+
+// return value
+  return result;
 }
 
-console.log(tickersToList(cryptos));
+console.log(tickersToList(cryptos, true));
