@@ -25,23 +25,53 @@ function arrayToList(array) {
   return list;
 }
 
+function arrayToListWithHints(array) {
+  let result = {};
+  if (Array.isArray(array)) {
+    let list = null;
+    array = array.reverse();
+    for (let item of array) {
+      list = {
+        value: item,
+        rest: list
+      };
+    }
+    result = list;
+  }
+  return result;
+}
+
+
 /* The test for the arrayToList function*/
 let array_ex = [1,2,3];
 // console.log(arrayToList(array_ex));
 
 
 function listToArray(list) {
-  console.log(`list: ${list}`)
   let array = [];
   for (let node = list; node; node = node.rest) {
     array.push(node.value);
-    console.log(`node: ${node}`); console.log(`node.rest: ${node.rest}`);
-    console.log(`node.value: ${node.value}`);
-    console.log(`array iterations: ${array}`);
+    // console.log(`node: ${node}`); console.log(`node.rest: ${node.rest}`);
+    // console.log(`node.value: ${node.value}`);
+    // console.log(`array iterations: ${array}`);
   }
   return array;
 }
 console.log(`calling function: ${listToArray(list)}`);
+
+function listToArrayWithHints(list) {
+  let result = [];
+  if (typeof list === 'undefined' || list.value === undefined || list.rest === undefined) {
+    return result;
+  } else {
+    for (let node = list; node; node = node.rest) {
+      if (node.hasOwnProperty('value')) {
+        result.push(node.value);
+      }
+    }
+  }
+  return result;
+}
 
 
 console.log("-----------------------");
@@ -53,9 +83,15 @@ function prepend(element, list) { /* add an element to the front of the list */
     };
   }
 
+
+// number 0 refers to the first element
 function nth(list, number) {
   return listToArray(list)[number];
 }
+console.log(`nth: " ${nth(list, 2)} "`);
+
+let number = 2;
+console.log(`nth: ${nth(list, number)}`);
 
 function nthRecursive(list, number) {
   if (number === 0) {
