@@ -1,18 +1,44 @@
 // Tic tac toe prompt - console two player game
 
-function getUserInput(nextPlayerSymbol) {
+function getBoardString(gameBoard)  {
+  let boardString = '';
+  // for(let i=0; i<gameBoard.length; i+3) {
+  //   boardString += `${gameBoard[i] === 'null' ? i+1 : gameBoard[i]}
+  //   ${gameBoard[i + 1] === 'null' ? i+2 : gameBoard[i+1]}
+  //   ${gameBoard[i + 2] === 'null' ? i+3 : gameBoard[i+2]} /n`;
+  // }
+  for (let i = 0; i < gameBoard.length; i += 1) {
+    boardString += `${gameBoard[i] ?? i+1}`;
+    if (i % 3 === 2) {
+      boardString += '\n';
+    }
+  }
 
+  return boardString;
 }
 
+
+function getUserInput(nextPlayerSymbol, gameBoard) {
+ return +prompt(`Board:\n${getBoardString(gameBoard)}: '${nextPlayerSymbol}': choose your coordinate: 0,..,8`);
+}
+
+// getUserInput('O', [null, null, 'O', null, null, 'O', null, null, 'O'])
+
 function isMoveValid(coordinates, gameBoard) {
+  if (gameBoard[coordinates] === null && [0,1,2,3,4,5,6,7,8].includes(coordinates) ) {
+    return true;
+  } else {
+    return false;
+  }
 
 }
 
 function makeAMove(gameBoard, nextPlayerSymbol) {
   // clone the game board before placing moves in it
   do {
-    let coordinates = getUserInput(nextPlayerSymbol);
+    let coordinates = getUserInput(nextPlayerSymbol, gameBoard);
   } while (!isMoveValid(coordinates, gameBoard));
+  gameBoard[coordinates] = nextPlayerSymbol;
   // return newGameBoard;
 }
 
@@ -56,6 +82,9 @@ function ticTacToe() {
   let players = ['X', 'O'];
   let nextPlayerIndex = 0;
 
+  let indexOfPlayer = Math.floor(Math.random(0,1)*2);
+  let currentPlayerSymbol = players[indexOfPlayer];
+
   // Computations
   do {
     gameBoard = makeAMove(gameBoard, currentPlayerSymbol);
@@ -64,3 +93,5 @@ function ticTacToe() {
   // Return value
   // return undefined;
 }
+
+ticTacToe();
