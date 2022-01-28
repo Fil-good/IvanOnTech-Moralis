@@ -2,7 +2,7 @@
 
 function getBoardString(gameBoard)  {
   let boardString = '';
-  // for(let i=0; i<gameBoard.length; i+3) {
+  // for(let i=0; i<gameBoard.length; i+=3) {
   //   boardString += `${gameBoard[i] === 'null' ? i+1 : gameBoard[i]}
   //   ${gameBoard[i + 1] === 'null' ? i+2 : gameBoard[i+1]}
   //   ${gameBoard[i + 2] === 'null' ? i+3 : gameBoard[i+2]} /n`;
@@ -24,21 +24,27 @@ function getUserInput(nextPlayerSymbol, gameBoard) {
 
 // getUserInput('O', [null, null, 'O', null, null, 'O', null, null, 'O'])
 
-function isMoveValid(coordinates, gameBoard) {
-  if (gameBoard[coordinates] === null && [0,1,2,3,4,5,6,7,8].includes(coordinates) ) {
-    return true;
-  } else {
-    return false;
-  }
+function isMoveValid(move, gameBoard) {
+  const boardIndex = move - 1;
 
+    return (
+      gameBoard[boardIndex] === null && [0, 1, 2, 3, 4, 5, 6, 7, 8].includes(move)
+    )
 }
 
 function makeAMove(gameBoard, nextPlayerSymbol) {
+
   // clone the game board before placing moves in it
+  let newGameBoard = JSON.parse(JSON.stringify(gameBoard));
+  // const newGameBoard = [...gameBoard]; /**solution by Zsolt */
+
+  let move;
   do {
-    let coordinates = getUserInput(nextPlayerSymbol, gameBoard);
-  } while (!isMoveValid(coordinates, gameBoard));
-  gameBoard[coordinates] = nextPlayerSymbol;
+    move = getUserInput(nextPlayerSymbol, gameBoard);
+  } while (!isMoveValid(move, gameBoard));
+  const boardIndex = move - 1;
+  newGameBoard[boardIndex] = nextPlayerSymbol;
+  return newGameBoard;
   // return newGameBoard;
 }
 
@@ -66,12 +72,20 @@ function hasLastMoverWon(lastMove, gameBoard) {
 
 function isGameOver(gameBoard, currentPlayerSymbol) {
   // 1. check if there is a winner
-  if (hasLastMoverWon(lastMove, gameBoard)) {
+  if (hasLastMoverWon(currentPlayerSymbol, gameBoard)) {
     // Write a message that last mover has won the game
     alert(`Congratulations, ${currentPlayerSymbol} has won the game`);
     return true;
   }
+
   // 2. check if the board is full
+  // if draw { alert:  ; return true }
+  if (gameBoard.every(element => element !== null)) {
+    alert('Draw.');
+    return true;
+  }
+
+  return false;
 
   // Return: winner/draw OR game is still in progress
 }
@@ -79,19 +93,14 @@ function isGameOver(gameBoard, currentPlayerSymbol) {
 function ticTacToe() {
   // State space
   let gameBoard = new Array(9).fill(null);
-  let players = ['X', 'O'];
-  let nextPlayerIndex = 0;
+  let currentPlayerSymbol = null;
 
-  let indexOfPlayer = Math.floor(Math.random(0,1)*2);
-  let currentPlayerSymbol = players[indexOfPlayer];
-
-  // Computations
+    // Computations
   do {
+    currentPlayerSymbol = currentPlayerSymbol === 'X' ? 'O' : 'X';
     gameBoard = makeAMove(gameBoard, currentPlayerSymbol);
   } while (!isGameOver(gameBoard, currentPlayerSymbol));
 
   // Return value
   // return undefined;
 }
-
-ticTacToe();
