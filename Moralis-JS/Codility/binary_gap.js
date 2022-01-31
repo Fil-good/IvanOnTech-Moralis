@@ -1,17 +1,13 @@
 function solution(N) {
-  let bin_arr = N.toString(2).split('');
-  return bin_arr;
-
-  for (i = 0; i < bin_arr.length; i += 1) {
-    let bin_gap = 0;
-    do {
-      bin_gap += 1;
-    }
-    while (bin_arr[i] === 0);
-    let finalResult = number;
-    (finalResulet > bin_gap) ? (return finalResulet) : (return bin_gap);
-  }
+  let bin_arr = N.toString(2);
+  let regExp = /1(0+)1/;
+  const matches = bin_arr.match(regExp);
+  return (matches[1].length);
 }
 
-let number = 15;
+let number = 145; /*10010001 => 3*/
+let number2 = 1061;
+let number3 = 3;
 solution(number);
+solution(number2);
+solution(number3);
