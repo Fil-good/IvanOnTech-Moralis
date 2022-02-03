@@ -31,7 +31,7 @@ function plusMinus(arr) {
   let sumPos = 0;
   let sumNeg = 0;
   let sumZero = 0;
-  for (i = 0; i < arr.length; i++) {
+  for (let i = 0; i < arr.length; i++) {
     if (arr[i] > 0) {
       sumPos += 1;
     } else if (arr[i] < 0) {
@@ -40,9 +40,12 @@ function plusMinus(arr) {
       sumZero += 1;
     }
   }
-  console.log(sumPos);
-  console.log(sumNeg);
-  console.log(sumZero);
+  let proportionPos = (sumPos / arr.length).toFixed(6);
+  let proportionNeg = (sumNeg / arr.length).toFixed(6);
+  let proportionZero = (sumZero / arr.length).toFixed(6);
+  console.log(proportionPos);
+  console.log(proportionNeg);
+  console.log(proportionZero);
 
 }
 
