@@ -33,19 +33,24 @@ function readLine() {
 // in the instructions they take into account all the program when giving examples:
 // return integer is for the main() function, as the flippingBits needs to
 // return a string!!!!
+
 function flippingBits(n) {
-  // Write your code here
-  let BinN = n.toString(2); console.log(BinN);
+
+  let BinN = n.toString(2);
+  let lengthBinN = BinN.length;
+
   let newString = '';
-  for (let i = 0; i < BinN.length; i++) {
+
+  for (let i = BinN.length - 1; i >= 0; i--) {
     if (BinN[i] === '0') {
-      newString += '1';
+      newString = '1' + newString;
     } else {
-      newString += '0';
+      newString = '0' + newString;
     }
   }
-
-  return newString;
+  let string32 = '1'.repeat(32 - lengthBinN) + newString;
+  let returnNum = parseInt(string32, 2);
+  return returnNum;
 
 }
 
