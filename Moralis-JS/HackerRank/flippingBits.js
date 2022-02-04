@@ -30,9 +30,7 @@ function readLine() {
  */
 
 
-// in the instructions they take into account all the program when giving examples:
-// return integer is for the main() function, as the flippingBits needs to
-// return a string!!!!
+
 
 function flippingBits(n) {
 
