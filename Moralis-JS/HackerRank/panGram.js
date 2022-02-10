@@ -31,24 +31,28 @@ function readLine() {
 
 // no break; possible in forEach loop!
 
+// array1 == array2 returns false, even though they contain the same values!!!
+
+
 function pangrams(s) {
   // Write your code here
-  const alpha = Array.from(Array(26)).map((e, i) => i + 65);
-  const alphabet = alpha.map((x) => String.fromCharCode(x));
-  let S = s.toUpperCase();
-  let res = '';
+  let s2 = s.replace(/\s/g, "");
+  let s3 = s2.toUpperCase();
+  let s4 = [... new Set(s3)];
+  let s5 = s4.sort();
 
-  for (letter of alphabet) {
-    if (S.includes(letter)) {
-      res = 'pangram';
-    } else {
-      res = 'not pangram';
-      break;
-    }
+
+  let alphabet = [...Array(26)].fill().map((_, i) => String.fromCharCode('A'.charCodeAt(0) + i));
+
+
+  if (JSON.stringify(alphabet) === JSON.stringify(s5)) {
+    return 'pangram';
+  } else {
+    return 'not pangram';
   }
-
-  console.log(res);
 }
+
+
 
 function main() {
   const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
