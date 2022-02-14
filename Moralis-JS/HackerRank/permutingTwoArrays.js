@@ -14,6 +14,7 @@ function twoArrays(k, A, B) {
     }
   }
   return res;
+}
 
 /*
 There are two - element arrays of integers, and.Permute them into some  and  such that the relation  holds for all  where.
