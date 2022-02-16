@@ -28,7 +28,7 @@ function solution(N) {
   for (i=0; i< bin_number.length; i+=1) {
   part_of_bin_arr = bin_number.slice(i);
   let one_match = part_of_bin_arr.match(regExp);
-    if (one_match !== null) { all_matches_array.push(one_match[0]) }; /*without zero index: gives array of array !!!!!!!??????!!!! */
+    if (one_match !== null) { all_matches_array.push(one_match[0]) }; /*without zero index: gives array of array !!! */
   }
 
 
