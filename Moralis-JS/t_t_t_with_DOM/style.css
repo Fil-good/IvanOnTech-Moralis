@@ -1,0 +1,25 @@
+
+body {
+  box-sizing: border-box;
+}
+
+.container {
+  border: 2px dotted black;
+}
+
+.table {
+  border: 2px solid black;
+  width: 450px;
+}
+
+.row {
+  display: flex;
+}
+
+.cell {
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  border: 1px solid black;
+  line-height: 150px; /* line-height same as height */
+}
