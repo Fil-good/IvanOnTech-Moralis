@@ -20,6 +20,8 @@ function EventHandler(event) {
     event.target.innerText = currentPlayerSymbol;
     if (hasLastMoverWon()) {
       $gameFinalStatus.innerHTML = `Congratulations, ${currentPlayerSymbol} has won the game`;
+
+
     } else if (gameBoard.every((element) => element !== null)) {
       $gameFinalStatus.innerHTML = `Draw. Game over.`;
     } else {
@@ -30,8 +32,12 @@ function EventHandler(event) {
 }
 
 for(let $cell of $cellList) {
-  $cell.addEventListener("click", EventHandler);
+  if ($gameFinalStatus.innerHTML === 'Congratulations! The winner is X.') {
+    $cell.addEventListener("click", EventHandler);
+  }
 }
+
+
 
 
 function hasLastMoverWon() {
