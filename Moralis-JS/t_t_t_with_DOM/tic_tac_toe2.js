@@ -35,6 +35,7 @@ for(let $cell of $cellList) {
   if ($gameFinalStatus.innerHTML === 'Congratulations! The winner is X.') {
     $cell.addEventListener("click", EventHandler);
   }
+  else removeEventListener("click", EventHandler);
 }
 
 

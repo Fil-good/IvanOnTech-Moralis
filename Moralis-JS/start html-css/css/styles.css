@@ -32,6 +32,16 @@
   /* when overflow: too much columns for a row ; add multiple lines */
   flex-wrap: wrap;
   /* flex-direction: column ; vertical main axis => align items across lines */
+
+  /* flexbox properties - solution of last exercise flexbox froggy */
+  /* #pond {
+display: flex;
+flex-direction: column-reverse;
+flex-wrap: wrap-reverse;
+justify-content: center;
+align-content: space-between;
+} */
+
 }
 
 .column {
