@@ -66,6 +66,24 @@ function timeConversion(s) {
    catch(e) { console.log(e); }
 
 }
+
+// not my solution below, smart use of modulo! if 12 it stays 12, otherwise 12 added, with max of 23
+
+function timeConversion(s) {
+
+  let AMPM = s.slice(-2);
+  let timeArr = s.slice(0, -2).split(":");
+  if (AMPM === "AM" && timeArr[0] === "12") {
+    // catching edge-case of 12AM
+    timeArr[0] = "00";
+  } else if (AMPM === "PM") {
+    // everything with PM can just be mod'd and added with 12 - the max will be 23
+    timeArr[0] = (timeArr[0] % 12) + 12
+  }
+  return timeArr.join(":");
+}
+
+
 //) function main() {
 //   const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
 //   const s = readLine();
