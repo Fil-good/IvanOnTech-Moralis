@@ -5,10 +5,11 @@ function matchingStrings(strings, queries) {
 // you would need an array of counters, length = q
   let counters = new Array(q).fill("");
   let countersInt = new Int8Array(counters);
+
   for(let j=0; j<q; j++) {
     for(let i=0; i<n; i++) {
       if(strings[i] === queries[j]) {
-        countersInt[i] += 1;
+        countersInt[j] += 1;
       }
     }
   }
