@@ -14,7 +14,6 @@ function lonelyinteger(a) {
     if (sortedA[i] != sortedA[i+1]) {
       console.log(`i after if: ${i}`);
       lonely = (sortedA[i]);
-      // console.log(lonely);
       break breakme;
     } else {
       lonely = sortedA[n-1];
@@ -23,9 +22,8 @@ function lonelyinteger(a) {
 console.log(lonely);
 };
 
-// console.log(lonely);
-// if(lonely==0) {console.log(sortedA[n-1])}
+
 
 // n=7, should iterate to 5th element, index 4
-let aa = [1];
+let aa = [1,2,2,4,4];
 lonelyinteger(aa)
