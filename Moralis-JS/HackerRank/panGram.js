@@ -31,7 +31,6 @@ function readLine() {
 
 // no break; possible in forEach loop!
 
-// array1 == array2 returns false, even though they contain the same values!!!
 
 
 function pangrams(s) {
@@ -45,6 +44,7 @@ function pangrams(s) {
   let alphabet = [...Array(26)].fill().map((_, i) => String.fromCharCode('A'.charCodeAt(0) + i));
 
 
+  // array1 == array2 returns false, even though they contain the same values!!!
   if (JSON.stringify(alphabet) === JSON.stringify(s5)) {
     return 'pangram';
   } else {

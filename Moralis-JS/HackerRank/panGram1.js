@@ -1,5 +1,4 @@
-// first solution, functional in console, but Hackerrank doesnt like this solution
-
+// regex is not iterable, see solution panGram.js
 
 function pangrams(s) {
   // Write your code here
@@ -11,13 +10,18 @@ function pangrams(s) {
   const regex = /A-z/g;
   for (a of regex) {
     if (s.find(a) == true) {
-      return 'pangram';
+
       for (letter of alphabet) {
         if (S.includes(letter)) {
-          res = 'pangram';
+          console.log('pangram');
         } else {
-          return 'not pangram';
-          res = 'not pangram';
-          break;
+          console.log('not pangram');
+
         }
       }
+    }
+  }
+}
+
+let s= "abcdefghijklmnopqrstuvwxyz";
+pangrams(s)

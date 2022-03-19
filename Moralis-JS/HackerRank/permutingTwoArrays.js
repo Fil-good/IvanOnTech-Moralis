@@ -1,12 +1,13 @@
 
 function twoArrays(k, A, B) {
-  let aSorted = A.sort();
-  let bSorted = B.sort();
-  let bSortedReversed = bSorted.reverse();
-  let n = bSorted.length;
+  // there is a problem with the sort function in js, doesn't sort properly 1 11 12 2 21!!!!
+
+  let aInt = new Uint8Array(A).sort();
+  let bInt = new Uint8Array(B).sort().reverse();
+  let n = bInt.length;
   let res = '';
   for (let i = 0; i < n; i++) {
-    if (aSorted[i] + bSorted[i] >= k) {
+    if (aInt[i] + bInt[i] >= k) {
       res = 'YES';
     } else {
       res = 'NO';
