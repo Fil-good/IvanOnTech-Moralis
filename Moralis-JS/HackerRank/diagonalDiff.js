@@ -14,3 +14,9 @@ function diagonalDifference(arr) {
     sum_forwardslash += arr_rows_reversed[i];
 
   }
+
+
+  return Math.abs(sum_backslash - sum_forwardslash);
+
+
+}
