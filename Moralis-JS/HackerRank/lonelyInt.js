@@ -9,6 +9,8 @@ function lonelyinteger(a) {
   // with breakme you can choose what to break
   // still one testcase on hackerrank that doesn't pass (case of n=1 I guess)
 
+  // alternative solution = (sum set) - (sum array), gives the unique value
+
   breakme: for (let i = 0; i < (n-2); i+=2) {
     console.log(`i before if: ${i}`);
     if (sortedA[i] != sortedA[i+1]) {
