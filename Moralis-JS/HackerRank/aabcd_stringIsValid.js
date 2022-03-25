@@ -1,3 +1,6 @@
+
+// reflection after seeing some solutions: better to work with HASH (see solution below)
+
 function isValid(s) {
 
 let l = s.length;
@@ -20,31 +23,73 @@ for (let i=0; i<26;i++) {
     subarray.shift();
   }
 }
-  console.log(sorted_alphabet_freq); console.log(subarray);
+  console.log(sorted_alphabet_freq); console.log(`subarray: ${subarray}`);
 
   let l_subarray = subarray.length;
 
   let res = '';
   let counter = 0;
-for(let i=0; i<l_subarray-1;i++) {
-  console.log(`in for loop: ${subarray[i]}`); console.log(`subarray[i+1]: ${subarray[i+1]}`);
-  if(subarray[0]!=subarray[i+1]) {
 
-    counter += 1;
+// aabbcd -> only one freq change but !isValid
+// aabbcccc -> only one freq change but !isValid
+console.log(`:: ${subarray[1]} ::`);
 
+  switch(true) {
+  case subarray[0] == subarray[l_subarray-1]:
+    console.log("YES");
+    res="YES";
+    break;
+
+  case (subarray[l_subarray-1]==subarray[1]) && (subarray[0]==1):
+    res="YES";
+    break;
+
+  case (subarray[0]==subarray[l_subarray-2] && subarray[l_subarray-1]==1):
+    res="YES";
+    break;
+
+  case (subarray[0]==subarray[1]) && (subarray[0] == subarray[l_subarray-2] && (subarray[l_subarray-1]-subarray[l_subarray-2]<2)):
+      console.log("YESS");
+    res= "YES";
+    break;
+
+  case (subarray[l_subarray-1] == subarray[l_subarray-2]) && (subarray[1]==subarray[l_subarray-1] && (subarray[l_subarray-1]-subarray[0]<2)):
+      console.log("YESSS");
+    res= "YES";
+    break;
+
+  default:
+      console.log("NOOOOOOO");
+    res="NO";
   }
-}
-console.log(counter);
-if(counter < 2) {
-  console.log("YES");
-  return 'YES';
-} else {
-  console.log("NO");
-  return 'NO';
-}
+
+return res;
 
 
 }
 
-let s = "aabbccccdd";
+let s = "aaaaabc";
+// let s = "aabbcdd";
 isValid(s) // ->97
+
+
+/* alternative solution from hackerrank discussions:
+
+function isValid(s) {
+  const f = {}
+  for (const c of s)
+    f[c] = f[c] ? f[c] + 1 : 1
+
+  let x = Object.values(f).sort((a, b) => a - b)
+
+  let max = x[x.length - 1]
+  let max2nd = x[x.length - 2]
+  let min = x[0]
+  let min2nd = x[1]
+
+  if (max === min) return 'YES'
+  if (max === min + 1 && min === max2nd) return 'YES'
+  if (min === 1 && max === min2nd) return 'YES'
+  return 'NO'
+}
+*/
