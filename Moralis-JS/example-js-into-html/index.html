@@ -5,9 +5,35 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-<link rel="stylesheet" href="./assets/style.css">
+  <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
+  <form action="#" method="POST" class="exchange-form">
+    <div class="form-row">
+      <label>
+        From:
+        <select name="from-token"></select>
+      </label>
+    </div>
+
+    <div class="form-row">
+      <label>
+        To:
+        <select name="to-token"></select>
+      </label>
+    </div>
+
+    <div class="form-row">
+      <button type="submit" class="js-submit-quote" disabled>Submit</button>
+    </div>
+
+
+
+
+  </form>
+  <script src="./exchange.js"></script>
+
+<div class="js-container-quote"></div>
 
 </body>
 </html>
