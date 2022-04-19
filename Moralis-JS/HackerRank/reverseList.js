@@ -1,14 +1,13 @@
 // Iterative Solution
 
 function reverse(head) {
-  let node = head,
+  let node = head, // or let current = head for readibility
     previous,
     tmp;
 
   while (node) {
     // save next before we overwrite node.next!
     tmp = node.next;
-    console.log(tmp);
 
     // reverse pointer
     node.next = previous;
@@ -21,11 +20,20 @@ console.log(`previous: ${previous.next}`);
   return previous;
 }
 
-
-let node = {
-  value: 5,
-  next: null
+let list1 = {
+  value: 1,
+  next: {
+    value: 2,
+    next: {
+      value:3,
+      next:null
+    }
+  }
 }
+
+reverse(list1)
+
+
 
 function makeNode(value) {
   return {
