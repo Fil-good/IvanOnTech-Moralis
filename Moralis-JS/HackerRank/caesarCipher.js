@@ -25,13 +25,13 @@ for(let i=0 ; i<n;i++) {
   // changing charcode to character for every element of array
   let newString = String.fromCharCode(...asciiCodes);
 
-  return newString;
+  console.log(newString);
 
 }
 
 
 
-let s = "AZ---az-----";
+let s = "ASTUVWXYZ---az6789$";
 let k = 5;
 
 caesarCipher(s,k)
