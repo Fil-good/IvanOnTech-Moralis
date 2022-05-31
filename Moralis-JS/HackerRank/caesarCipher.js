@@ -1,35 +1,37 @@
 function caesarCipher(s, k) {
 
-  let arr = s.split('');
-  let n = arr.length;
+let arrFromStr = s.split('');
+let n = arrFromStr.length;
+let asciiCodes = [];
+// changing charcodes for every element of string, and store in array
+for(let i=0 ; i<n;i++) {
+    if(s.charCodeAt(i)>=97 && s.charCodeAt(i)<=122) {
+      if(s.charCodeAt(i)+k<=122) {
+          asciiCodes[i] = s.charCodeAt(i) + k;
+        } else {
+            asciiCodes[i] = s.charCodeAt(i) - (26-k);
+        }
+    } else if (s.charCodeAt(i)>=65 && s.charCodeAt(i)<=90) {
+        if(s.charCodeAt(i)+k<=90) {
+            asciiCodes[i] = s.charCodeAt(i)+k;
+        } else {
+            asciiCodes[i] = s.charCodeAt(i) - (26-k);
+        }
+      } else {
+        asciiCodes[i] = s.charCodeAt(i);
+        }
+}
 
-  console.log(arr);
+  // changing charcode to character for every element of array
+  let newString = String.fromCharCode(...asciiCodes);
 
-  for(let i=0;i<n;i++) {
-    const initialCharCode = arr[i].charCodeAt(0);
-    let newCharCode = 0;
-    let newChar = '';
-    console.log(initialCharCode);
-
-    if (initialCharCode >= 65 && initialCharCode<= 90) {
-      if(initialCharCode+k>90) {
-        newCharCode = newCharCode - 90 + k;
-        newChar = String.fromCharCode(newCharCode);
-        console.log(`newchar: ${newChar}`);
-        arr[i] = newCharCode;
-      }
-
-    }
-
-  }
-  console.log(`arr join: ${arr.join('')}`);
-
-  console.log(`91-97: ${String.fromCharCode(91,92,93,94,95,96,97,122)}`);
-
+  return newString;
 
 }
 
-let s = "AZaz";
+
+
+let s = "AZ---az-----";
 let k = 5;
 
 caesarCipher(s,k)
